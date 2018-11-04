@@ -27,7 +27,7 @@ SECRET_KEY = 'hga6zy9(%5ds6gr_4nw0ux&&_uz0f8x$nz-c#pu#8bd-y+4uk%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pychat.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
