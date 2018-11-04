@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import dj_database_url
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -87,16 +89,9 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pychat',
-        'USER': 'pychat',
-        'PASSWORD': 'pychat',
-        'HOST': 'localhost',
-        'PORT': 5432,
-    }
-}
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES = dict(default={})
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -141,3 +136,8 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+try:
+    from server.local import *
+except ImportError:
+    pass
