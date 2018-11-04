@@ -1,2 +1,2 @@
-release: python manage.py migrate --settings=pychat.settings
-web: gunicorn pychat.wsgi --log-file -
+release: python manage.py migrate --settings=server.settings
+web: gunicorn server.wsgi --log-file -
