@@ -8,10 +8,26 @@
     <script src="{% static 'static_jquery/js/jquery.js' %}"></script>
 </head>
 <body>
-    User: <span class="user" data-id="{{request.user.id}}">{{ request.user }}</span>
-    <div class="chat-box"></div>
-    <input id="chat-message-input" type="text" size="100"/><br/>
-    <input id="chat-message-submit" type="button" value="Send"/>
+User: <span class="user" data-id="{{request.user.id}}">{{ request.user }}</span>
+<div class="chat-box">
+    {% for message in object_list %}
+    {% if message.user_id == request.user.id %}
+    <div class="text-right">
+        <div class="my-message text-left">{{message.message}}
+            <div class="user">{{message.user}}</div>
+        </div>
+    </div>
+    {% else %}
+    <div>
+        <div class="message">{{message.message}}
+            <div class="user">{{message.user}}</div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+<input id="chat-message-input" type="text" size="100"/><br/>
+<input id="chat-message-submit" type="button" value="Send"/>
 </body>
 <script src="{% static 'js/chat.js' %}"></script>
 </html>

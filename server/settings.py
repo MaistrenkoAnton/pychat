@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'chat',
     'channels',
+
     'django_static_jquery',
     'rest_framework'
 ]

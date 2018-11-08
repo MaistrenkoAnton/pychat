@@ -1,7 +1,7 @@
 var roomName = 'test'
 var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 var chatSocket = new WebSocket(ws_scheme + '://' + window.location.host + '/ws/chat/' + roomName + '/');
-
+updateScroll();
 chatSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
     const messages = data['messages'];
@@ -42,7 +42,6 @@ document.querySelector('#chat-message-submit').onclick = function(e) {
     chatSocket.send(JSON.stringify({
         'message': message
     }));
-
     messageInputDom.value = '';
 };
 
