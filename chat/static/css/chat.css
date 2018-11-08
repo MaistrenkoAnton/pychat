@@ -1,0 +1,41 @@
+.chat-box {
+    height: 80vh;
+    background: lightgray;
+    padding: 5px;
+    overflow: auto;
+}
+
+.message {
+    display: inline-block;
+    background: white;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 2px 5px;
+    min-width: 100px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-size: 18px;
+}
+
+.my-message {
+    display: inline-block;
+    background: lightgray;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 2px 5px;
+    min-width: 100px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-size: 18px;
+}
+
+.user {
+    color: gray;
+    font-size: 12px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
