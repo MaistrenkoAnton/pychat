@@ -48,5 +48,5 @@ document.querySelector('#chat-message-submit').onclick = function(e) {
 
 function updateScroll() {
     var element = $('.chat-box');
-    element.scrollTop(element.height());
+    element.scrollTop(element[0].scrollHeight);
 }
