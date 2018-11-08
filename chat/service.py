@@ -7,3 +7,7 @@ def create_message(message, user):
 
 def get_all_messages():
     return Chat.objects.all()
+
+
+def delete_message(id):
+    return Chat.objects.filter(id=id).delete()

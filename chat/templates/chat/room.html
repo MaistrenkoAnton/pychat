@@ -6,6 +6,9 @@
     <title>Chat Room</title>
     <link href="{% static 'css/chat.css' %}" rel="stylesheet" type="text/css">
     <script src="{% static 'static_jquery/js/jquery.js' %}"></script>
+    <script src="{% static 'js/init.js' %}"></script>
+    <script src="{% static 'js/chat.js' %}"></script>
+    <script src="{% static 'js/delete.js' %}"></script>
 </head>
 <body>
 User: <span class="user" data-id="{{request.user.id}}">{{ request.user }}</span>
@@ -13,7 +16,11 @@ User: <span class="user" data-id="{{request.user.id}}">{{ request.user }}</span>
     {% for message in object_list %}
     {% if message.user_id == request.user.id %}
     <div class="text-right">
-        <div class="my-message text-left">{{message.message}}
+        <div class="my-message text-left">
+            <div class="message-header">
+                <img class="delete" data-id="{{message.id}}" src="{% static 'images/delete.png' %}" alt="">
+            </div>
+            <div>{{message.message}}</div>
             <div class="user">{{message.user}}</div>
         </div>
     </div>
@@ -26,8 +33,7 @@ User: <span class="user" data-id="{{request.user.id}}">{{ request.user }}</span>
     {% endif %}
     {% endfor %}
 </div>
-<input id="chat-message-input" type="text" size="100"/><br/>
-<input id="chat-message-submit" type="button" value="Send"/>
+<input class="chat-message-input" type="text" size="100"/><br/>
+<input class="chat-message-submit" type="button" value="Send"/>
 </body>
-<script src="{% static 'js/chat.js' %}"></script>
 </html>
