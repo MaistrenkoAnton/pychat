@@ -5,7 +5,7 @@
     overflow: auto;
 }
 
-.message {
+.friend-message {
     display: inline-block;
     background: white;
     margin: 5px;
@@ -45,7 +45,7 @@
     height: 15px;
 }
 
-.delete {
+.chat-message-delete {
     width: 15px;
     height: 15px;
     color: red;

@@ -4,29 +4,31 @@
 <head>
     <meta charset="utf-8"/>
     <title>Chat Room</title>
-    <link href="{% static 'css/chat.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'chat/css/chat.css' %}" rel="stylesheet" type="text/css">
     <script src="{% static 'static_jquery/js/jquery.js' %}"></script>
-    <script src="{% static 'js/init.js' %}"></script>
-    <script src="{% static 'js/chat.js' %}"></script>
-    <script src="{% static 'js/delete.js' %}"></script>
+    <script src="{% static 'chat/js/init.js' %}"></script>
+    <script src="{% static 'chat/js/sockets.js' %}"></script>
+    <script src="{% static 'chat/js/create.js' %}"></script>
+    <script src="{% static 'chat/js/delete.js' %}"></script>
 </head>
 <body>
-User: <span class="user" data-id="{{request.user.id}}">{{ request.user }}</span>
+User: <span class="user" data-user-id="{{request.user.id}}">{{ request.user }}</span>
 <div class="chat-box">
     {% for message in object_list %}
     {% if message.user_id == request.user.id %}
     <div class="text-right">
-        <div class="my-message text-left">
+        <div class="message my-message text-left">
             <div class="message-header">
-                <img class="delete" data-id="{{message.id}}" src="{% static 'images/delete.png' %}" alt="">
+                <img class="chat-message-delete" onclick="onDeleteMessage(event)" data-message-id="{{message.id}}"
+                     src="{% static 'chat/images/delete.png' %}" alt="">
             </div>
             <div>{{message.message}}</div>
             <div class="user">{{message.user}}</div>
         </div>
     </div>
     {% else %}
-    <div>
-        <div class="message">{{message.message}}
+    <div class="message">
+        <div class="friend-message" data-message-id="{{message.id}}">{{message.message}}
             <div class="user">{{message.user}}</div>
         </div>
     </div>

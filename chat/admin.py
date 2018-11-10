@@ -5,4 +5,4 @@ from chat.models import Chat
 
 @admin.register(Chat)
 class ChatAdmin(admin.ModelAdmin):
-    list_display = ('message',)
+    list_display = ('message', 'user')
