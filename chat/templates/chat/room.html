@@ -17,7 +17,7 @@ User: <span class="user" data-user-id="{{request.user.id}}">{{ request.user }}</
     {% for message in object_list %}
     {% if message.user_id == request.user.id %}
     <div class="text-right">
-        <div class="message my-message text-left">
+        <div class="message my-message text-left" data-message-id="{{message.id}}" data-is-read="{{message.is_read}}">
             <div class="message-header">
                 <img class="chat-message-delete" onclick="onDeleteMessage(event)" data-message-id="{{message.id}}"
                      src="{% static 'chat/images/delete.png' %}" alt="">
@@ -28,7 +28,7 @@ User: <span class="user" data-user-id="{{request.user.id}}">{{ request.user }}</
     </div>
     {% else %}
     <div class="message">
-        <div class="friend-message" data-message-id="{{message.id}}">{{message.message}}
+        <div class="friend-message" data-message-id="{{message.id}}" data-is-read="{{message.is_read}}">{{message.message}}
             <div class="user">{{message.user}}</div>
         </div>
     </div>

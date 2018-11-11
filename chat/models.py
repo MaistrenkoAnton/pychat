@@ -4,8 +4,9 @@ from django_extensions.db.models import TimeStampedModel
 
 
 class Chat(TimeStampedModel):
-    message = models.TextField()
+    message = models.TextField(_('User message'))
     user = models.ForeignKey('auth.User', verbose_name=_('Sender'), on_delete=models.CASCADE)
+    is_read = models.BooleanField(_('Is message read'), default=False)
 
     class Meta:
         verbose_name = _('Chat')
